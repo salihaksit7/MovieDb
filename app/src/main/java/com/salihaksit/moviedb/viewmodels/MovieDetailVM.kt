@@ -1,4 +1,4 @@
-package com.salihaksit.moviedb.ui
+package com.salihaksit.moviedb.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import com.salihaksit.moviedb.base.BaseViewModel

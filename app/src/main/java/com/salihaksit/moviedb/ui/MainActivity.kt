@@ -5,6 +5,7 @@ import com.salihaksit.moviedb.R
 import com.salihaksit.moviedb.base.BaseActivity
 import com.salihaksit.moviedb.databinding.ActivityMainBinding
 import com.salihaksit.moviedb.utils.observe
+import com.salihaksit.moviedb.viewmodels.MainVM
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {

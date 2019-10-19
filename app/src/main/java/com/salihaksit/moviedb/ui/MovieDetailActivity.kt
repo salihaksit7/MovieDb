@@ -4,6 +4,7 @@ import com.salihaksit.moviedb.R
 import com.salihaksit.moviedb.base.BaseActivity
 import com.salihaksit.moviedb.data.layoutmodel.MovieLayoutModel
 import com.salihaksit.moviedb.databinding.ActivityMovieDetailBinding
+import com.salihaksit.moviedb.viewmodels.MovieDetailVM
 
 class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetailVM>() {
     override val layoutResourceId: Int

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.salihaksit.moviedb.ui.MovieDetailVM" />
+            type="com.salihaksit.moviedb.viewmodels.MovieDetailVM" />
     </data>
 
     <ScrollView

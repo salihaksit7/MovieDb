@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.salihaksit.moviedb.ui.MainVM" />
+            type="com.salihaksit.moviedb.viewmodels.MainVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
