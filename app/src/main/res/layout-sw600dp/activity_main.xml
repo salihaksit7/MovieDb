@@ -40,17 +40,24 @@
             android:visibility="@{viewModel.movieDetailData == null ? View.GONE : View.VISIBLE}"
             app:constraint_referenced_ids="scroll_view" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_movie_detail_empty_state"
+        <blink
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="For details\nclick on the movie"
-            android:visibility="@{viewModel.movieDetailData == null ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/guide_line_vertical_half"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_movie_detail_empty_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="For details\nclick on the movie"
+                android:textSize="20sp"
+                android:visibility="@{viewModel.movieDetailData == null ? View.VISIBLE : View.GONE}" />
+        </blink>
+
 
         <ScrollView
             android:id="@+id/scroll_view"
@@ -76,6 +83,8 @@
                     android:id="@+id/tv_movie_detail_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@{viewModel.movieDetailData.title}"
                     app:layout_constraintTop_toBottomOf="@id/img_movie_detail_backdrop"
                     tools:text="dummy title" />
@@ -84,8 +93,9 @@
                     android:id="@+id/tv_movie_detail_vote_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:drawableStart="@drawable/ic_star"
-                    android:drawablePadding="8dp"
+                    android:drawablePadding="12dp"
                     android:gravity="center_vertical"
                     android:text="@{viewModel.movieDetailData.voteCount}"
                     app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_title"
@@ -95,6 +105,8 @@
                     android:id="@+id/tv_movie_detail_overview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingEnd="16dp"
                     android:text="@{viewModel.movieDetailData.overview}"
                     app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_vote_count" />
             </androidx.constraintlayout.widget.ConstraintLayout>

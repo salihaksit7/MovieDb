@@ -30,6 +30,9 @@
                 android:id="@+id/tv_movie_detail_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
                 android:text="@{viewModel.movieDetailData.title}"
                 app:layout_constraintTop_toBottomOf="@id/img_movie_detail_backdrop"
                 tools:text="dummy title" />
@@ -38,8 +41,10 @@
                 android:id="@+id/tv_movie_detail_vote_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
                 android:drawableStart="@drawable/ic_star"
-                android:drawablePadding="8dp"
+                android:drawablePadding="12dp"
                 android:gravity="center_vertical"
                 android:text="@{viewModel.movieDetailData.voteCount}"
                 app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_title"
@@ -49,6 +54,9 @@
                 android:id="@+id/tv_movie_detail_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
                 android:text="@{viewModel.movieDetailData.overview}"
                 app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_vote_count" />
         </androidx.constraintlayout.widget.ConstraintLayout>

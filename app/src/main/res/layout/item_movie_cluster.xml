@@ -23,13 +23,17 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="@{obj.header}"
+            android:textSize="20sp"
             tools:text="test" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:clipToPadding="false"
             android:orientation="horizontal"
+            android:paddingStart="8dp"
             app:adapter="@{obj.adapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_movie" />
