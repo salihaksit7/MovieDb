@@ -1,6 +1,7 @@
 package com.salihaksit.moviedb.ui
 
 import android.view.View
+import androidx.lifecycle.MutableLiveData
 import com.salihaksit.moviedb.base.BaseViewModel
 import com.salihaksit.moviedb.base.adapter.BaseRecyclerAdapter
 import com.salihaksit.moviedb.base.adapter.ItemClickListener
@@ -21,6 +22,7 @@ class MainVM @Inject constructor(private val movieUseCase: MovieUseCase) :
     private lateinit var movieClusterList: MutableList<MovieClusterLayoutModel>
 
     val adapter = BaseRecyclerAdapter<MovieClusterLayoutModel>(arrayListOf())
+    val detailClickEvent = MutableLiveData<MovieLayoutModel>()
 
     fun getMovies() {
         movieClusterList = movieUseCase.getMovieClusterList(this, this)
@@ -47,7 +49,7 @@ class MainVM @Inject constructor(private val movieUseCase: MovieUseCase) :
     }
 
     override fun onItemClick(view: View, item: MovieLayoutModel) {
-
+        detailClickEvent.postValue(item)
     }
 
     override fun onBottomReached(position: Int, item: MovieLayoutModel) {

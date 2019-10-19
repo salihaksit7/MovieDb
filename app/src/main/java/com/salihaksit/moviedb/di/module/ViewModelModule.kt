@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.salihaksit.moviedb.di.ViewModelFactory
 import com.salihaksit.moviedb.ui.MainVM
+import com.salihaksit.moviedb.ui.MovieDetailVM
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,4 +19,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainVM::class)
     internal abstract fun vmMain(vmMain: MainVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieDetailVM::class)
+    internal abstract fun vmMovieDetail(vmMovieDetail: MovieDetailVM): ViewModel
 }

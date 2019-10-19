@@ -22,6 +22,10 @@ class MovieUseCase @Inject constructor(private val movieRepository: MovieReposit
                     it.results.map {
                         MovieLayoutModel(
                             "https://image.tmdb.org/t/p/w500" + it.poster_path,
+                            "https://image.tmdb.org/t/p/w500" + it.backdrop_path,
+                            it.overview,
+                            it.title,
+                            it.vote_count.toString(),
                             type
                         )
                     }.toMutableList()

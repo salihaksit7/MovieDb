@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.salihaksit.moviedb.ui.MovieDetailVM" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_movie_detail_backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:imageUrl="@{viewModel.movieDetailData.detailImage}"
+                app:layout_constraintDimensionRatio="H,500:281"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_movie_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.movieDetailData.title}"
+                app:layout_constraintTop_toBottomOf="@id/img_movie_detail_backdrop"
+                tools:text="dummy title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_movie_detail_vote_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.movieDetailData.voteCount}"
+                app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_title"
+                tools:text="789" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_movie_detail_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.movieDetailData.overview}"
+                app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_vote_count" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
