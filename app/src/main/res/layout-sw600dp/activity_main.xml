@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.salihaksit.moviedb.ui.MainVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_vertical_half"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:adapter="@{viewModel.adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_vertical_half"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_movie_cluster" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guide_line_vertical_half">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_movie_detail_backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:imageUrl="@{viewModel.movieDetailData.detailImage}"
+                    app:layout_constraintDimensionRatio="H,500:281"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_movie_detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.movieDetailData.title}"
+                    app:layout_constraintTop_toBottomOf="@id/img_movie_detail_backdrop"
+                    tools:text="dummy title" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_movie_detail_vote_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_star"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.movieDetailData.voteCount}"
+                    app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_title"
+                    tools:text="789" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_movie_detail_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.movieDetailData.overview}"
+                    app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_vote_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

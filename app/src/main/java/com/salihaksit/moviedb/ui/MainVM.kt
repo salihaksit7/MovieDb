@@ -19,10 +19,21 @@ class MainVM @Inject constructor(private val movieUseCase: MovieUseCase) :
     ItemClickListener<MovieLayoutModel>,
     OnBottomReachedListener<MovieLayoutModel> {
 
+    private var isTablet = false
     private lateinit var movieClusterList: MutableList<MovieClusterLayoutModel>
+    lateinit var detailClickEvent: MutableLiveData<MovieLayoutModel>
+    lateinit var movieDetailData: MutableLiveData<MovieLayoutModel>
 
     val adapter = BaseRecyclerAdapter<MovieClusterLayoutModel>(arrayListOf())
-    val detailClickEvent = MutableLiveData<MovieLayoutModel>()
+
+    fun setTablet(isTablet: Boolean) {
+        this.isTablet = isTablet
+        when (isTablet) {
+            true -> movieDetailData = MutableLiveData()
+            else -> detailClickEvent = MutableLiveData()
+        }
+
+    }
 
     fun getMovies() {
         movieClusterList = movieUseCase.getMovieClusterList(this, this)
@@ -49,7 +60,11 @@ class MainVM @Inject constructor(private val movieUseCase: MovieUseCase) :
     }
 
     override fun onItemClick(view: View, item: MovieLayoutModel) {
-        detailClickEvent.postValue(item)
+        when (isTablet) {
+            true -> movieDetailData.postValue(item)
+            else -> detailClickEvent.postValue(item)
+        }
+
     }
 
     override fun onBottomReached(position: Int, item: MovieLayoutModel) {
