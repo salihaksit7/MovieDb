@@ -1,5 +1,6 @@
 package com.salihaksit.moviedb.di.module
 
+import com.salihaksit.moviedb.BuildConfig
 import com.salihaksit.moviedb.network.Api
 import dagger.Module
 import dagger.Provides
@@ -27,7 +28,7 @@ class NetworkModule {
         loggingInterceptor: HttpLoggingInterceptor
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://github.com/")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(
                 OkHttpClient.Builder()
                     .readTimeout(30, TimeUnit.SECONDS)

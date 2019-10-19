@@ -1,6 +1,6 @@
 package com.salihaksit.moviedb.di.module
 
-import com.salihaksit.moviedb.MainActivity
+import com.salihaksit.moviedb.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

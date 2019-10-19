@@ -5,9 +5,21 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.salihaksit.moviedb.ui.MainVM" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:adapter="@{viewModel.adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_movie_cluster" />
+    </FrameLayout>
 </layout>

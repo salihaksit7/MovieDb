@@ -1,8 +1,8 @@
-package com.salihaksit.moviedb
+package com.salihaksit.moviedb.ui
 
+import com.salihaksit.moviedb.R
 import com.salihaksit.moviedb.base.BaseActivity
 import com.salihaksit.moviedb.databinding.ActivityMainBinding
-import com.salihaksit.moviedb.ui.MainVM
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     override val layoutResourceId: Int
@@ -11,7 +11,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         get() = MainVM::class.java
 
     override fun init() {
-
+        dataBinding.viewModel = viewModel
+        viewModel.getMovies()
     }
 
 }

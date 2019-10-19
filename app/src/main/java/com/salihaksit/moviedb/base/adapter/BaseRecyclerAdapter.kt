@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.salihaksit.moviedb.BR
 import com.salihaksit.moviedb.utils.OnBottomReachedListener
 
 class BaseRecyclerAdapter<T : LayoutModel> :
@@ -12,7 +13,7 @@ class BaseRecyclerAdapter<T : LayoutModel> :
 
     private lateinit var itemList: MutableList<T>
     private var listener: ItemClickListener<T>? = null
-    private var onBottomReachedListener: OnBottomReachedListener? = null
+    private var onBottomReachedListener: OnBottomReachedListener<T>? = null
 
 
     inner class ViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
@@ -21,7 +22,7 @@ class BaseRecyclerAdapter<T : LayoutModel> :
 
     constructor(
         listener: ItemClickListener<T>,
-        onBottomReachedListener: OnBottomReachedListener
+        onBottomReachedListener: OnBottomReachedListener<T>
     ) : super() {
         this.listener = listener
         this.onBottomReachedListener = onBottomReachedListener
@@ -51,14 +52,15 @@ class BaseRecyclerAdapter<T : LayoutModel> :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (getItem(position) != null) {
-            if (position == itemCount - 1) {
-                onBottomReachedListener?.onBottomReached(position)
-            }
             val item = getItem(position)
-//        todo uncomment
-//            holder.binding.setVariable(obj, item)
-//            if (listener != null)
-//                holder.binding.setVariable(clickListener, listener)
+            holder.binding.setVariable(BR.obj, item)
+
+            if (position == itemCount - 5) {
+                onBottomReachedListener?.onBottomReached(position, item!!)
+            }
+
+            if (listener != null)
+                holder.binding.setVariable(BR.clickListener, listener)
 
             holder.binding.executePendingBindings()
         }
@@ -75,6 +77,13 @@ class BaseRecyclerAdapter<T : LayoutModel> :
 
     fun setList(list: MutableList<T>) {
         itemList = list
+        notifyDataSetChanged()
+    }
+
+    fun addAll(list: MutableList<T>) {
+        if (::itemList.isInitialized.not())
+            itemList = arrayListOf()
+        itemList.addAll(list)
         notifyDataSetChanged()
     }
 
