@@ -15,7 +15,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         get() = MainVM::class.java
 
     override fun init() {
-        val isTablet = scroll_view != null
+        val isTablet = group_movie_detail != null
         dataBinding.viewModel = viewModel
         viewModel.setTablet(isTablet)
         viewModel.getMovies()
