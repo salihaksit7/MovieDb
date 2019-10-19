@@ -6,6 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.salihaksit.moviedb.utils.negativeButton
+import com.salihaksit.moviedb.utils.observe
+import com.salihaksit.moviedb.utils.positiveButton
+import com.salihaksit.moviedb.utils.showAlertDialog
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -36,6 +40,15 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
         bindView(layoutResourceId)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
         init()
+
+        observe(viewModel.errorMessage) {
+            showAlertDialog {
+                setTitle("Error")
+                setMessage(it)
+                positiveButton { }
+                negativeButton { }
+            }
+        }
     }
 
 

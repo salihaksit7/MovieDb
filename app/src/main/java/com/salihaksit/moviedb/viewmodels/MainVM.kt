@@ -55,7 +55,7 @@ class MainVM @Inject constructor(private val movieUseCase: MovieUseCase) :
                 movieClusterList[type.order].totalPages = it.totalPages
                 movieClusterList[type.order].adapter.addAll(it.itemList)
             }, {
-
+                onRetrieveError(it)
             })
     }
 
