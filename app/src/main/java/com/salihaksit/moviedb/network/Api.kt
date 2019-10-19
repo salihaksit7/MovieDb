@@ -1,6 +1,5 @@
 package com.salihaksit.moviedb.network
 
-import com.salihaksit.moviedb.BuildConfig.API_KEY
 import com.salihaksit.moviedb.network.models.MovieResponseModel
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -11,8 +10,6 @@ interface Api {
     @GET("discover/movie")
     fun getMovies(
         @Query("page") page: Int,
-        @Query("sort_by") type: String,
-        @Query("language") language: String = "en-US",
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("sort_by") type: String
     ): Observable<MovieResponseModel>
 }
