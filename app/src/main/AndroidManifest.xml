@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".ui.MovieDetailActivity"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

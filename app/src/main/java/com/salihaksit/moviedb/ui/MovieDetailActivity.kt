@@ -13,10 +13,15 @@ class MovieDetailActivity : BaseActivity<ActivityMovieDetailBinding, MovieDetail
         get() = MovieDetailVM::class.java
 
     override fun init() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         dataBinding.viewModel = viewModel
         intent.getSerializableExtra("movieDetail")?.let {
             viewModel.movieDetailData.postValue(it as MovieLayoutModel)
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
 }
