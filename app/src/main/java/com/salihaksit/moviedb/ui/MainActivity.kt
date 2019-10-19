@@ -1,10 +1,10 @@
 package com.salihaksit.moviedb.ui
 
 import android.content.Intent
-import androidx.lifecycle.Observer
 import com.salihaksit.moviedb.R
 import com.salihaksit.moviedb.base.BaseActivity
 import com.salihaksit.moviedb.databinding.ActivityMainBinding
+import com.salihaksit.moviedb.utils.observe
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
@@ -21,17 +21,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         if (isTablet)
             return
 
-        viewModel.detailClickEvent.observe(this, Observer {
-            it?.let {
-                startActivity(
-                    Intent(this, MovieDetailActivity::class.java).putExtra(
-                        "movieDetail",
-                        it
-                    )
-                )
-            }
-        })
-
+        observe(viewModel.detailClickEvent) {
+            startActivity(
+                Intent(this, MovieDetailActivity::class.java)
+                    .putExtra("movieDetail", it)
+            )
+        }
     }
 
 }
